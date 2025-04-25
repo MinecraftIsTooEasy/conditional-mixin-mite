@@ -1,12 +1,13 @@
 package me.fallenbreath.conditionalmixin.api.util;
 
-import dev.architectury.injectables.annotations.ExpectPlatform;
+//import dev.architectury.injectables.annotations.ExpectPlatform;
+import me.fallenbreath.conditionalmixin.api.util.fabric.VersionCheckerImpl;
 import net.fabricmc.loader.api.Version;
 
 import java.util.Collection;
 import java.util.Optional;
 
-@SuppressWarnings("ConstantValue")
+//@SuppressWarnings("ConstantValue")
 public class VersionChecker
 {
 	/**
@@ -14,10 +15,11 @@ public class VersionChecker
 	 *
 	 * @param modId The id of the mod to check
 	 */
-	@ExpectPlatform
+//	@ExpectPlatform
 	public static boolean isModPresent(String modId)
 	{
-		throw new AssertionError();
+		return VersionCheckerImpl.isModPresent(modId);
+//		throw new AssertionError();
 	}
 
 	/**
@@ -25,10 +27,11 @@ public class VersionChecker
 	 *
 	 * @param modId The id of the mod to get version from
 	 */
-	@ExpectPlatform
+//	@ExpectPlatform
 	public static Optional<String> getModVersionString(String modId)
 	{
-		throw new AssertionError();
+		return VersionCheckerImpl.getModVersionString(modId);
+//		throw new AssertionError();
 	}
 
 	/**
@@ -41,10 +44,11 @@ public class VersionChecker
 	 *                           <li>"[1.2.0,)" or "[2.0, 2.1)" for forge-like platforms</li>
 	 *                         </ul>
 	 */
-	@ExpectPlatform
+//	@ExpectPlatform
 	public static boolean doesModVersionSatisfyPredicate(String modId, String versionPredicate)
 	{
-		throw new AssertionError();
+		return VersionCheckerImpl.doesModVersionSatisfyPredicate(modId, versionPredicate);
+//		throw new AssertionError();
 	}
 
 	/**
@@ -66,39 +70,39 @@ public class VersionChecker
 
 	// ================================= Deprecated =================================
 
-	/**
-	 * Notes: Only works in fabric, just for backward-compatibility
-	 *
-	 * @param version          Should be a {@link net.fabricmc.loader.api.Version} instance, the version to check
-	 * @param versionPredicate The fabric-syntax version predicate string, e.g. ">=1.2.0" or "2.0.x"
-	 * @deprecated Use {@link #doesModVersionSatisfyPredicate} instead, which is platform-independent
-	 */
-	@ExpectPlatform
-	@Deprecated
-	public static boolean doesVersionSatisfyPredicate(Object version, String versionPredicate)
-	{
-		throw new AssertionError();
-	}
-
-	/**
-	 * Notes: Only works in fabric, just for backward-compatibility
-	 */
-	@Deprecated
-	public static boolean doesVersionSatisfyPredicate(Version version, String versionPredicate)
-	{
-		return doesVersionSatisfyPredicate((Object)version, versionPredicate);
-	}
-
-	/**
-	 * Notes: Only works in fabric, just for backward-compatibility
-	 *
-	 * @param version           The version to check
-	 * @param versionPredicates A collection of the version predicates to test
-	 * @deprecated Use {@link #doesModVersionSatisfyPredicate} instead, which is platform-independent
-	 */
-	@Deprecated
-	public static boolean doesVersionSatisfyPredicate(Version version, Collection<String> versionPredicates)
-	{
-		return versionPredicates.isEmpty() || versionPredicates.stream().anyMatch(vp -> doesVersionSatisfyPredicate(version, vp));
-	}
+//	/**
+//	 * Notes: Only works in fabric, just for backward-compatibility
+//	 *
+//	 * @param version          Should be a {@link net.fabricmc.loader.api.Version} instance, the version to check
+//	 * @param versionPredicate The fabric-syntax version predicate string, e.g. ">=1.2.0" or "2.0.x"
+//	 * @deprecated Use {@link #doesModVersionSatisfyPredicate} instead, which is platform-independent
+//	 */
+//	@ExpectPlatform
+//	@Deprecated
+//	public static boolean doesVersionSatisfyPredicate(Object version, String versionPredicate)
+//	{
+//		throw new AssertionError();
+//	}
+//
+//	/**
+//	 * Notes: Only works in fabric, just for backward-compatibility
+//	 */
+//	@Deprecated
+//	public static boolean doesVersionSatisfyPredicate(Version version, String versionPredicate)
+//	{
+//		return doesVersionSatisfyPredicate((Object)version, versionPredicate);
+//	}
+//
+//	/**
+//	 * Notes: Only works in fabric, just for backward-compatibility
+//	 *
+//	 * @param version           The version to check
+//	 * @param versionPredicates A collection of the version predicates to test
+//	 * @deprecated Use {@link #doesModVersionSatisfyPredicate} instead, which is platform-independent
+//	 */
+//	@Deprecated
+//	public static boolean doesVersionSatisfyPredicate(Version version, Collection<String> versionPredicates)
+//	{
+//		return versionPredicates.isEmpty() || versionPredicates.stream().anyMatch(vp -> doesVersionSatisfyPredicate(version, vp));
+//	}
 }
